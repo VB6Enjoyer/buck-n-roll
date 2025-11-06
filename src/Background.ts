@@ -46,11 +46,10 @@ export class Background extends Container {
         const guitar = Sprite.from("Guitar");
         const electricSwitch = new ElectricSwitch(Texture.from("Switch-On"), Texture.from("Switch-Off"));
 
-        // TODO This doesn't work, I've tried everything and it just doesn't fucking work.
         const menuTextStyle = new TextStyle({
             fontSize: 60,
             fill: 0x000000,
-            fontFamily: "Chaos_Engine",
+            fontFamily: "RulerGold",
         });
         const playText = new Text("Play", menuTextStyle);
 

@@ -5,7 +5,7 @@ import { TickerScene } from "./TickerScene";
 import { Group } from "tweedle.js";
 import { SceneAbstract } from "./SceneAbstract";
 import { parseMidiFile } from "./midiParser";
-import { sound } from "@pixi/sound";
+//import { sound } from "@pixi/sound";
 
 export class MenuScene extends SceneAbstract {
 
@@ -80,16 +80,8 @@ export class MenuScene extends SceneAbstract {
                 const songMetadata = await this.parseSongMetadata(txtFile);
 
                 setTimeout(() => {
-                    const tickerScene = new TickerScene(parsedMidiFile, songMetadata);
+                    const tickerScene = new TickerScene(parsedMidiFile, songMetadata, audioBuffer);
                     tickerScene.startScheduling();
-
-                    sound.add("song", audioBuffer);
-
-                    // TODO Find a better implementation that doesn't require using a specific timeout for the song to play.
-                    // This current one also probably difficults implementing functions such as pausing the song. Fuck.
-                    setTimeout(() => {
-                        sound.play("song");
-                    }, 1300);
 
                     this.addChild(tickerScene);
 

@@ -30,7 +30,7 @@ export function parseMidiFile(file: File): Promise<[string, number][]> {
 }
 
 function processMidiJson(json: any) { // json shouldn't be "any", but I couldn't find the correct type for this.
-    console.log('Processing MIDI JSON:', json);
+    //console.log('Processing MIDI JSON:', json);
 
     const jsonArray = convertArraysToObjectArrays(Object.values(json));
     let notesArray: [string, number][] = [];
@@ -56,7 +56,6 @@ function processMidiJson(json: any) { // json shouldn't be "any", but I couldn't
             }
         }
     }
-    console.log(tempoMap);
 
     let bpm = 60000 / (tempoMap[0][0] / 1000); // Initial beats per minute.
     const division = json.division; // Division value from MIDI file.
@@ -70,17 +69,10 @@ function processMidiJson(json: any) { // json shouldn't be "any", but I couldn't
 
         accumulatedDelta += currentObject.delta;
 
-
         if (tempoMapIterator < tempoMap.length) {
             if (accumulatedDelta >= tempoMap[tempoMapIterator][1]) {
-                console.log("tempoMapLength: " + tempoMap.length);
-                console.log("tempoMapIterator: " + tempoMapIterator);
-                console.log("current bpm: " + bpm);
-
                 bpm = 60000 / (tempoMap[tempoMapIterator][0] / 1000);
-                console.log("new bpm: " + bpm);
                 msPerTick = 60000 / (bpm * division);
-                console.log("msPerTick: " + msPerTick);
                 tempoMapIterator++;
                 accumulatedDelta = 0;
             }
@@ -127,7 +119,7 @@ function processMidiJson(json: any) { // json shouldn't be "any", but I couldn't
         }
     }
 
-    console.log(notesArray);
+    //console.log(notesArray);
     return notesArray;
 }
 

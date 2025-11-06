@@ -72,8 +72,9 @@ export const manifest: AssetsManifest = {
             name: "fonts",
             assets:
             {
-                Chaos_Engine: "./fonts/chaos-engine-upgrade-store.ttf",
-                PixelifySans: "https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+                RedeemGold: "./fonts/RedeemGold.ttf",
+                RulerGold: "./fonts/RulerGold.ttf",
+                SinsGold: "./fonts/SinsGold.ttf",
             }
         },
 
